@@ -10,3 +10,6 @@
 ###> global ###
 .idea
 .env
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
