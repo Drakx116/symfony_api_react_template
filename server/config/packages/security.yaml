@@ -19,9 +19,9 @@ security:
             anonymous: true
             provider: app_user_provider
             form_login:
-                check_path:               /auth/login
-                success_handler:          lexik_jwt_authentication.handler.authentication_success
-                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+                check_path: /auth/login
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
 
         api:

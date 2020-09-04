@@ -14,25 +14,35 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     *
+     * @var integer
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     *
+     * @var string
      */
     private $username;
 
     /**
      * @ORM\Column(type="json")
+     *
+     * @var array
      */
     private $roles = [];
 
     /**
-     * @var string The hashed password
      * @ORM\Column(type="string")
+     *
+     * @var string The hashed password
      */
     private $password;
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
@@ -42,12 +52,19 @@ class User implements UserInterface
      * A visual identifier that represents this user.
      *
      * @see UserInterface
+     *
+     * @return string
      */
     public function getUsername(): string
     {
-        return (string) $this->username;
+        return $this->username;
     }
 
+    /**
+     * @param string $username
+     *
+     * @return $this
+     */
     public function setUsername(string $username): self
     {
         $this->username = $username;
@@ -67,6 +84,11 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
+    /**
+     * @param array $roles
+     *
+     * @return $this
+     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -79,7 +101,7 @@ class User implements UserInterface
      */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return $this->password;
     }
 
     public function setPassword(string $password): self
@@ -92,7 +114,7 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getSalt()
+    public function getSalt():void
     {
         // not needed when using the "bcrypt" algorithm in security.yaml
     }
@@ -100,7 +122,7 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function eraseCredentials()
+    public function eraseCredentials():void
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
